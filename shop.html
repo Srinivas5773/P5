@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop All Products | Srinivas Ecommerce</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div>🚀 Special Launch Offer: Get 20% OFF with code <strong>SRINIVAS20</strong></div>
+      <div class="top-bar-links">
+        <a href="orders.html"><i class="bi bi-truck"></i> Track Order</a>
+        <a href="admin.html"><i class="bi bi-speedometer2"></i> Admin Panel</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="navbar">
+        <a href="index.html" class="logo">
+          <div class="logo-icon"><i class="bi bi-bag-heart-fill"></i></div>
+          <span>Srinivas<span style="color:var(--text-main);">Store</span></span>
+        </a>
+
+        <div class="search-container">
+          <div class="search-box">
+            <input type="text" id="global-search" class="search-input" placeholder="Search for Mobiles, Fashion, Furniture, Groceries..." autocomplete="off">
+            <button class="search-btn"><i class="bi bi-search"></i></button>
+          </div>
+          <div id="search-results" class="search-results"></div>
+        </div>
+
+        <div class="nav-actions">
+          <button id="theme-toggle" class="theme-toggle-btn" title="Toggle Theme">
+            <i class="bi bi-moon-fill"></i>
+          </button>
+          <a href="wishlist.html" class="action-btn">
+            <i class="bi bi-heart"></i>
+            <span>Wishlist</span>
+            <span id="wishlist-badge" class="badge" style="display:none;">0</span>
+          </a>
+          <a href="cart.html" class="action-btn">
+            <i class="bi bi-cart3"></i>
+            <span>Cart</span>
+            <span id="cart-badge" class="badge" style="display:none;">0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Shop Section -->
+  <main class="container">
+    <div style="margin-top:1.5rem;">
+      <a href="index.html" style="font-size:0.85rem; color:var(--text-muted);">Home</a>
+      <span style="font-size:0.85rem; color:var(--text-muted);"> / </span>
+      <span style="font-size:0.85rem; font-weight:700; color:var(--text-main);">Shop Catalog</span>
+    </div>
+
+    <div class="shop-layout">
+      
+      <!-- Filter Sidebar -->
+      <aside class="sidebar-filter">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem; border-bottom:2px solid var(--border-color); padding-bottom:0.75rem;">
+          <h3 style="font-size:1.15rem; font-weight:800; color:var(--text-main);"><i class="bi bi-funnel-fill"></i> Filters</h3>
+          <button class="btn-filter-reset" onclick="location.href='shop.html'" style="width:auto; padding:0.2rem 0.6rem;">Clear</button>
+        </div>
+
+        <!-- Filter 1: Department Category -->
+        <div class="filter-group">
+          <h4 class="filter-title">Department</h4>
+          <div class="filter-options">
+            <label class="checkbox-label">
+              <input type="radio" name="filter-category" value="all" checked />
+              <span>All Departments</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="radio" name="filter-category" value="fashion" />
+              <span>Fashion & Apparel</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="radio" name="filter-category" value="mobiles" />
+              <span>Mobiles & Electronics</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="radio" name="filter-category" value="furniture" />
+              <span>Furniture & Home</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="radio" name="filter-category" value="groceries" />
+              <span>Fresh Groceries</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Filter 2: Price Range Slider -->
+        <div class="filter-group">
+          <h4 class="filter-title">Price Range (₹)</h4>
+          <div class="price-range-inputs">
+            <input type="number" id="min-price-input" class="price-input" placeholder="Min" value="0" min="0">
+            <span>-</span>
+            <input type="number" id="max-price-input" class="price-input" placeholder="Max" value="100000">
+          </div>
+        </div>
+
+        <!-- Filter 3: Brands -->
+        <div class="filter-group">
+          <h4 class="filter-title">Brands</h4>
+          <div id="brand-filter-list" class="filter-options">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+      </aside>
+
+      <!-- Shop Main Content Grid -->
+      <section>
+        
+        <!-- Shop Header Bar -->
+        <div class="shop-header-bar">
+          <div id="product-result-count" style="font-weight:700; font-size:0.95rem; color:var(--text-main);">
+            Showing products...
+          </div>
+
+          <div style="display:flex; align-items:center; gap:0.8rem;">
+            <span style="font-size:0.85rem; font-weight:600; color:var(--text-muted);">Sort By:</span>
+            <select id="sort-select" class="sort-select">
+              <option value="popular">Popularity</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="rating">Highest Rated</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Products Grid Container -->
+        <div id="shop-products-grid" class="products-grid">
+          <!-- Rendered by shop.js -->
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 Srinivas Ecommerce. All Rights Reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/shop.js"></script>
+
+  <!-- Three.js 3D Library & Srinivas 3D Engine -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/3d-engine.js"></script>
+</body>
+
+</html>
